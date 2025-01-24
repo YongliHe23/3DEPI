@@ -1,0 +1,8 @@
+# Ignore .mat file
+*.mat
+
+# Ignore dependecies
+recon/pulseq/
+recon/PulCeq/
+recon/mirt/
+recon/toppe/
