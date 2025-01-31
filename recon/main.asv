@@ -56,7 +56,7 @@ smap = smap(Rx, Ry, Rz, :);
 spgr = spgr(Rx, Ry, Rz, :);
 
 % Save result
-save_root='/mnt/storage/yonglihe/h5files/20250123/';
+save_root='/mnt/storage/yonglihe/h5files/20250127/';
 if ~isempty('sense.mat')
     save([save_root sprintf('%s_%d.mat', 'sense', m)], 'smap', 'spgr', '-v7.3');
 end
@@ -109,7 +109,7 @@ hmriutils.epi.io.draw2hdf(D, etl, np, fn, 'maxFramesPerFile', 50);
 %% SENSE recon
 etl=90;
 fn = [save_root '3depi_SSmb1on.h5'];
-draw = hmriutils.epi.io.readframe(fn, 1);
+draw = hmriutils.epi.io.readframe(fn, 12);
 dfr = hmriutils.epi.rampsampepi2cart(draw, kxo, kxe, nx, fov(1)*100, 'nufft'); 
 dfr = hmriutils.epi.epiphasecorrect(dfr, a);    %  [nx etl np nc]
 d_SSmb1on=zeros(nx,ny,nz,32);
@@ -118,7 +118,7 @@ I_SSmb1on=zeros(nx,ny,nz);
 I_SSmb1on=bart('pics -l1 -r0.001',d_SSmb1on,smap);
 
 fn=[save_root '3depi_mb1off.h5'];
-draw = hmriutils.epi.io.readframe(fn, 1);
+draw = hmriutils.epi.io.readframe(fn, 12);
 dfr = hmriutils.epi.rampsampepi2cart(draw, kxo, kxe, nx, fov(1)*100, 'nufft'); 
 %dfr = hmriutils.epi.epiphasecorrect(dfr, a);    %  [nx etl np nc]
 dfr = hmriutils.epi.epiphasecorrect(dfr, a);
@@ -129,7 +129,7 @@ I_mb1off=bart('pics -l1 -r0.001',d_mb1off,smap);
 
 %naive
 fn = [save_root '3depi_naive_mb1on.h5'];
-draw = hmriutils.epi.io.readframe(fn, 1);
+draw = hmriutils.epi.io.readframe(fn, 2);
 dfr = hmriutils.epi.rampsampepi2cart(draw, kxo, kxe, nx, fov(1)*100, 'nufft'); 
 dfr = hmriutils.epi.epiphasecorrect(dfr, a);    %  [nx etl np nc]
 d_naive_mb1on=zeros(nx,ny,nz,32);
@@ -151,7 +151,7 @@ I_SSmb6on=zeros(nx,ny,nz);
 I_SSmb6on=bart('pics -l1 -r0.001',d_SSmb6on,smap);
 
 %beta off
-fn = '3depi_mb6off.h5';
+fn = [save_root '3depi_mb6off.h5'];
 draw = hmriutils.epi.io.readframe(fn, 1);
 dfr = hmriutils.epi.rampsampepi2cart(draw, kxo, kxe, nx, fov(1)*100, 'nufft'); 
 dfr = hmriutils.epi.epiphasecorrect(dfr, a);    %  [nx etl np nc]
@@ -161,7 +161,7 @@ I_mb6off=zeros(nx,ny,nz);
 I_mb6off=bart('pics -l1 -r0.001',d_mb6off,smap);
 
 %naive
-fn = '3depi_naive_mb6on.h5';
+fn = [save_root '3depi_naive_mb6on.h5'];
 draw = hmriutils.epi.io.readframe(fn, 1);
 dfr = hmriutils.epi.rampsampepi2cart(draw, kxo, kxe, nx, fov(1)*100, 'nufft'); 
 dfr = hmriutils.epi.epiphasecorrect(dfr, a);    %  [nx etl np nc]

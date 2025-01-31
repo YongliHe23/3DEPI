@@ -178,7 +178,7 @@ end
 %%
 % 3D EPI fully sampled reference
 mb = 1; Ry = 1; Rz = mb; caipiShiftZ = 0;
-nDummyFrames = 2;
+nDummyFrames = 0;
 nFrames = 2;
 pf_ky=1.0;
 if TODO(8)
