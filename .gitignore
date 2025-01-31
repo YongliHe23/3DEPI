@@ -1,5 +1,9 @@
 # Ignore .mat file
 *.mat
+*.mod
+*.seq
+*.tar
+
 
 # Ignore dependecies
 recon/pulseq/

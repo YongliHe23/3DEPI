@@ -5,25 +5,25 @@
 scanner = 'GE';  % 'GE' or 'Siemens' (for now!)
 
 % odd/even k-space delay (samples) to avoid phase wrap in fit
-kspace_delay = -1.5;  
+kspace_delay =-1.5;  
 
 % echo readout gradient waveform file
 %readout_trajectory_file = '/export/jfnielse/github/scanLog/HarmonizedMRI/fMRI/readout_Jan2024.mod';
-readout_trajectory_file ='/home/yonglihe/Documents/MATLAB/gre3d_IVsat/paper-ovs-compare/EPI/SSAD/cal/module10.mod';
+readout_trajectory_file ='/home/yonglihe/Documents/MATLAB/gre3d_IVsat/paper-ivs-compare/sphereIV/SSAD/cal/module10.mod';
 
-dataDir = '/mnt/storage/yonglihe/transfer/20250123/';
+dataDir = '/mnt/storage/yonglihe/transfer/20250125/';
 
 % data file names
-datafile_ghostcal = [dataDir 'ylhe_e06551_s00003_22528/P22528.7'];
-datafile_SSmb1on = [dataDir 'ylhe_e06551_s00004_23040/P23048.7'];
-datafile_mb1off=[dataDir 'ylhe_e06551_s00005_23552/P23552.7'];
-datafile_SSmb6on=[dataDir 'ylhe_e06551_s00006_24064/P24064.7'];
-datafile_mb6off=[dataDir 'ylhe_e06551_s00007_24576/P24576.7'];
-datafile_naive_mb1on=[dataDir 'ylhe_e06551_s00008_25088/P'];
-datafile_naive_mb6on=[dataDir ''];
+datafile_ghostcal = [dataDir ];
+datafile_SSmb1on = [dataDir ];
+datafile_mb1off=[dataDir ];
+datafile_SSmb6on=[dataDir ];
+datafile_mb6off=[dataDir ];
+datafile_naive_mb1on=[dataDir ];
+datafile_naive_mb6on=[dataDir ];
 %datafile_noise=[dataDir ];
 
-datafile_b0 = [dataDir 'ylhe_e06551_s00002_22016/P22016.7'];
+datafile_b0 = [dataDir 'ylhe_e06562_s00003_23040/P23040.7'];
 b0.deltaTE = 1000/440*1e-3;   % sec
 b0.N = [100 100 100];         % matrix size
 b0.fov = [24 24 24]*1e-2;     % m
