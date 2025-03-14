@@ -1,4 +1,4 @@
-datafile_noise='/mnt/storage/yonglihe/transfer/20250125/ylhe_e06562_s00011_27136/P27136.7';
+datafile_noise='/mnt/storage/yonglihe/transfer/20250127/ylhe_e06573_s00011_18944/P18944.7';
 D=readraw(datafile_noise,scanner);
 %D=reshape(D,[],nc);
 fn = [save_root 'noise.h5'];   % used by recon_timeseries.m as well

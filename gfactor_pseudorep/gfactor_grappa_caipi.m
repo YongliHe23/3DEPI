@@ -1,8 +1,9 @@
-function [g]=gfactor_grappa(d_fs,d_us,mu,sigma,N)
+function [g]=gfactor_grappa_caipi(d_fs,d_us,indices,mu,sigma,N)
 % use pseudo replica to estimate gfactor with GRAPPA recon
 % - Inputs:
 %   - d_fs: [nx,etl,nz,nc], complex fully-sampled data
 %   - d_us: [nx,etl,nz,nc], complex under-sampled data
+%   - indices: [etl 2] ky-kz locations of PE lines within one echo train
 %   - mu: [1,nc], complex noise mean 
 %   - sigma: [nc,nc], complex noise covariance matrix
 %   - N: scalar, number of pseudo replica 
@@ -21,7 +22,7 @@ ny=etl; %assume ny = etl(echo train length), i.e. partial fourier factor=1
 I_fs=zeros(nx,ny,nz,N);
 fprintf("start generating %d replica of fully-sampled images...",N);
 for i=1:N
-    fprintf('\r%d/%d',i,N);
+    fprintf('\r%d/%d',i,N); %fprintf(%s%s,repmat('\b',size(msg)),msg)
     rng(i)
     noise_=mvnrnd_cmplx(mu,sigma,n);
     noise=reshape(noise_,nx,etl,nz,nc);
@@ -52,7 +53,7 @@ for i=1:N
     noise_=mvnrnd_cmplx(mu,sigma,n);
     noise=reshape(noise_,nx,etl,nz,nc);
     d_us_noisy=(d_us+noise).*mask_pky;
-    d_us_grappa=grappa(permute(d_us_noisy,[4,1,2,3]),permute(calib,[4,1,2,3]),[1,3,2],[3,2,2]); %d_us_grappa=[nc,nx,ny,nz]
+    d_us_grappa=grappa_caipi(permute(d_us_noisy,[4,1,2,3]),permute(calib,[4,1,2,3]),[1,3,2],[5,3,2],indices); %d_us_grappa=[nc,nx,ny,nz]
     [~,I_us(:,:,:,i)]=toppe.utils.ift3(permute(d_us_grappa,[2,3,4,1]));
 end
 fprintf('\n')

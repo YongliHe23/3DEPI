@@ -9,21 +9,21 @@ kspace_delay =-1.5;
 
 % echo readout gradient waveform file
 %readout_trajectory_file = '/export/jfnielse/github/scanLog/HarmonizedMRI/fMRI/readout_Jan2024.mod';
-readout_trajectory_file ='/home/yonglihe/Documents/MATLAB/gre3d_IVsat/paper-ivs-compare/sphereIV/sinc-alpha/SSAD/cal/module10.mod';
+readout_trajectory_file ='/home/yonglihe/Documents/MATLAB/gre3d_IVsat/paper-ivs-compare/SSAD/cal/module10.mod';
 
-dataDir = '/mnt/storage/yonglihe/transfer/20250125/';
+dataDir = '/mnt/storage/yonglihe/transfer/20250311/Exam6811/';
 
 % data file names
-datafile_ghostcal = [dataDir 'ylhe_e06562_s00004_23552/P23552.7'];
-datafile_SSmb1on = [dataDir 'ylhe_e06562_s00005_24064/P24064.7'];
-datafile_mb1off=[dataDir 'ylhe_e06562_s00006_24576/P24576.7'];
-datafile_SSmb6on=[dataDir 'ylhe_e06562_s00007_25088/P25088.7'];
-datafile_mb6off=[dataDir 'ylhe_e06562_s00008_25600/P25600.7'];
-datafile_naive_mb1on=[dataDir 'ylhe_e06562_s00009_26112/P26112.7'];
-datafile_naive_mb6on=[dataDir 'ylhe_e06562_s00010_26624/P26624.7'];
+datafile_ghostcal = [dataDir 'Series3/ScanArchive_7347633TMRFIX_20250311_145827443.h5'];%'Series17/ScanArchive_7347633TMRFIX_20250311_155035425.h5'];
+datafile_SSmb1on = [dataDir 'Series18/ScanArchive_7347633TMRFIX_20250311_155129739.h5'];
+datafile_mb1off=[dataDir 'Series19/ScanArchive_7347633TMRFIX_20250311_155217968.h5'];
+datafile_SSmb6on=[dataDir 'Series21/ScanArchive_7347633TMRFIX_20250311_155354280.h5'];
+datafile_mb6off=[dataDir 'Series22/ScanArchive_7347633TMRFIX_20250311_155807647.h5'];
+datafile_naive_mb1on=[dataDir 'Series20/ScanArchive_7347633TMRFIX_20250311_155252612.h5'];
+datafile_naive_mb6on=[dataDir 'Series23/ScanArchive_7347633TMRFIX_20250311_160222010.h5'];
 %datafile_noise=[dataDir ];
 
-datafile_b0 = [dataDir 'ylhe_e06562_s00003_23040/P23040.7'];
+datafile_b0 = [dataDir 'Series16/ScanArchive_7347633TMRFIX_20250311_154742368.h5'];
 b0.deltaTE = 1000/440*1e-3;   % sec
 b0.N = [100 100 100];         % matrix size
 b0.fov = [24 24 24]*1e-2;     % m
